@@ -1,0 +1,109 @@
+{
+  "name": "Hive",
+  "scopeName": "source.hive",
+  "fileTypes": ["hql"],
+  "patterns": [
+    {
+    	"match" : "\\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned by|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add)\\b",
+    	"name" : "keyword.control.hive"
+    },
+    {
+      "match" : "(--).*$\\n?",
+      "name" : "comment.line.double-slash.asciidoc"
+    },
+    {
+      "match" : "\\b(?i:string|tinyint|smallint|int|bigint|boolean|float|double|timestamp|binary)\\b",
+      "name" : "storage.type.hive"
+    },
+    {
+      "match" : "\\b(?i:struct|map|array)\\b",
+      "name" : "support.type.hive"
+    },
+    {
+      "match" : "\\b(?i)null\\b",
+      "name" : "constant.language.hive"
+    },
+    {
+      "begin": "\"", 
+      "end": "\"", 
+      "name": "string.quoted.double.hive", 
+      "patterns": [
+        {
+          "match": "\\\\.", 
+          "name": "constant.character.escape.hive"
+        }
+      ]
+    }, 
+    {
+      "begin": "'", 
+      "end": "'", 
+      "name": "string.quoted.single.hive", 
+      "patterns": [
+        {
+          "match": "\\\\.", 
+          "name": "constant.character.escape.hive"
+        }
+      ]
+    },
+    {
+      "name": "keyword.operator.arithmetic.hive",
+      "match": "\\b(\\+|\\-|\\*|\\/|\\%|&|\\|\\^|~)\\b"
+    },
+    {
+      "name" : "keyword.operator.relational.hive",
+      "match" : "\\b(=|<=>|==|<>|<|<=|>|>=|between|is|like|rlike|regexp)\\b"
+    },
+    {
+      "name" : "keyword.operator.logical.hive",
+      "match" : "\\b(and|&&|or|not|\\|\\||!)\\b"
+    },
+    {
+      "name" : "support.function.udf.mathematic.hive",
+      "match" : "\\b(?i:round|floor|ceil|ceiling|rand|exp|ln|log|pow|power|sqrt|bin|hex|unhex|conv|abs|pmod|sin|asin|cos|acos|tan|atan|degrees|radians|positive|negative|sign|e|pi)\\b"
+    },
+        {
+      "name" : "support.function.udf.collection.hive",
+      "match" : "\\b(?i:size|map_keys|map_values|array_contains|sort_array)\\b"
+    },
+        {
+      "name" : "support.function.udf.type-cast.hive",
+      "match" : "\\b(?i:binary|cast)\\b"
+    },
+    {
+      "name" : "support.function.udf.date.hive",
+      "match" : "\\b(?i:from_unixtime|unix_timestamp|to_date|year|month|day|dayofmonth|hour|minute|second|weekofyear|datediff|date_add|date_sub|from_utc_timestamp|to_utc_timestamp)\\b"
+    },
+    {
+      "name" : "support.function.udf.conditional.hive",
+      "match" : "\\b(?i:if|coalesce)\\b"
+    },
+    {
+      "name" : "support.function.udf.string.hive",
+      "match" : "\\b(?i:ascii|concat|context_ngrams|concat_ws|find_in_set|format_number|get_json_object|in_file|instr|length|locate|lower|lcase|lpad|ltrim|ngrams|parse_url|printf|regexp_extract|regexp_replace|repeat|reverse|rpad|rtrim|sentences|space|split|str_to_map|substr|substring|translate|trim|upper|ucase)\\b"
+    },
+    {
+      "name" : "support.function.udf.misc.hive",
+      "match" : "\\b(?i:java_method|xpath|xpath_short|xpath_int|xpath_long|xpath_float|xpath_double|xpath_number|xpath_string|get_json_object)\\b"
+    },
+    {
+      "match" : "\\b(?i:count|sum|avg|min|max|variance|var_pop|var_samp|stddev_pop|stddev_samp|covar_pop|covar_samp|corr|percentile|percentile_approx|histogram_numeric|collect_set)\\b",
+      "name" : "support.function.udaf.hive"
+    },
+    {
+      "name" : "support.function.udtf.hive",
+      "match" : "\\b(?i:inline|explode|json_tuple|parse_url_tuple)\\b"
+    },
+    {
+      "match": "(?i)\\s*(set)\\s+([^\\=]+)\\s*=\\s*(\\S+);",
+      "captures": {
+        "1": {
+          "name": "keyword.parameter.hive"
+        }, 
+        "2": {
+          "name": "storage.type.parameter.hive"
+        }
+      }
+    } 
+  ],
+  "uuid": "a4023757-1f16-4e02-b349-d1673b8626b8"
+}
