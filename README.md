@@ -1,7 +1,7 @@
-hive-sublime-text2
+hive-sublime-text
 ==================
 
-Hive support for Sublime Text 2
+Hive support for Sublime Text (2/3)
 
 # Install
 
