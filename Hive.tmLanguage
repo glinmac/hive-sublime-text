@@ -5,7 +5,6 @@
 	<key>fileTypes</key>
 	<array>
 		<string>hql</string>
-		<string>sql</string>
 	</array>
 	<key>name</key>
 	<string>Hive</string>
@@ -13,7 +12,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned by|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add)\b</string>
+			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned by|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate)\b</string>
 			<key>name</key>
 			<string>keyword.control.hive</string>
 		</dict>
@@ -24,14 +23,22 @@
 			<string>comment.line.double-slash.asciidoc</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>/\*</string>
+			<key>end</key>
+			<string>\*/</string>
+			<key>name</key>
+			<string>comment.block.hive</string>
+		</dict>
+		<dict>
 			<key>match</key>
-			<string>\b(?i:string|tinyint|smallint|int|bigint|boolean|float|double|timestamp|binary)\b</string>
+			<string>\b(?i:tinyint|smallint|int|bigint|float|double|decimal|timestamp|boolean|string|binary)\b</string>
 			<key>name</key>
 			<string>storage.type.hive</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:struct|map|array)\b</string>
+			<string>\b(?i:struct|map|array|uniontype)\b</string>
 			<key>name</key>
 			<string>support.type.hive</string>
 		</dict>
