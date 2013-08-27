@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned by|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate)\b</string>
+			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned by|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate|SET DBPROPERTIES)\b</string>
 			<key>name</key>
 			<string>keyword.control.hive</string>
 		</dict>
@@ -44,7 +44,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?i)null\b</string>
+			<string>\b(?i:null|true|false)\b</string>
 			<key>name</key>
 			<string>constant.language.hive</string>
 		</dict>
@@ -155,7 +155,9 @@
 			<string>support.function.udtf.hive</string>
 		</dict>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>(?i)\s*(set)\s+([^\=]+)\s*=\s*</string>
+			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
@@ -168,8 +170,15 @@
 					<string>storage.type.parameter.hive</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>(?i)\s*(set)\s+([^\=]+)\s*=\s*(\S+);</string>
+			<key>end</key>
+			<string>;$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<key>scopeName</key>
