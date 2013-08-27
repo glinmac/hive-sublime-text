@@ -1,0 +1,9 @@
+{
+
+    "name": "Comment",
+    "scope": "source.hive",
+    "settings" : {
+    	"shellVariables" : [{"name" : "TM_COMMENT_START", "value": "-- "}]
+    },
+    "uuid": "ac9a1c07-8ccf-462a-b72d-1a00eb81e106"
+}
