@@ -1,0 +1,8 @@
+{
+	"name" : "Symbol List",
+	"scope": "source.hive storage.type.parameter.hive, source.hive storage.type.definition.hive",
+	"settings": {
+		"showInSymbolList": 1
+	},
+	"uuid": "672b4a70-15ae-11e3-8ffd-0800200c9a66",
+}
