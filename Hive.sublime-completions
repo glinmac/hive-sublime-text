@@ -36,6 +36,9 @@
                 { "trigger" : "negative", "contents": "negative(${1:double})" },
                 { "trigger" : "sign", "contents": "sign(${1:double})" },
 
+                { "trigger" : "decimal(precision, scale)", "contents": "decimal(${1:precision}, ${2:scale})"},
+                { "trigger" : "char(length)", "contents": "char(${1:length})"},
+
                 { "trigger" : "size", "contents": "size(${1:value})" },
                 { "trigger" : "map_keys", "contents": "map_keys(${1:map})" },
                 { "trigger" : "map_values", "contents": "map_values(${1:map})" },
@@ -53,6 +56,7 @@
                 { "trigger" : "year", "contents": "year(${1:date})" },
                 { "trigger" : "month", "contents": "month(${1:date})" },
                 { "trigger" : "day", "contents": "day(${1:date})" },
+                { "trigger" : "dayofmonth", "contents": "dayofmonth(${1:date})" },
                 { "trigger" : "minute", "contents": "minute(${1:date})" },
                 { "trigger" : "second", "contents": "second(${1:date})" },
                 { "trigger" : "weekofyear", "contents": "weekofyear(${1:date})" },
@@ -138,12 +142,14 @@
                 { "trigger" : "histogram_numeric", "contents": "histogram_numeric(${1:col}, ${2:b})" },
                 { "trigger" : "collect_set", "contents": "collect_set(${1:col})" },
                 { "trigger" : "collect_list", "contents": "collect_list(${1:col})" },
+                { "trigger" : "ntile", "contents": "ntile(${1:int})" },
 
                 { "trigger" : "explode", "contents": "explode(${1:value})" },
                 { "trigger" : "inline", "contents": "inine(${1:value})" },
                 { "trigger" : "json_tuple", "contents": "json_tuple(${1:json}, ${2:k1}, ${3:k2} ...)" },
                 { "trigger" : "parse_url_tuple", "contents": "parse_url_tupe(${1:url}), ${2:p1}, ${3:p2} ...)" },
                 { "trigger" : "stack", "contents": "stack(${1:n}, ${2:v1}, .. ${3:vk})" },
+                { "trigger" : "posexplode", "contents": "posexplode(${1:array})" },
 
                 "TINYINT ",
                 "SMALLINT ",
@@ -157,6 +163,7 @@
                 "BOOLEAN ",
                 "STRING ",
                 "VARCHAR ",
+                "CHAR",
                 "BINARY ",
 
                 "STRUCT ",
@@ -220,7 +227,7 @@
                 "EXPLAIN",
                 "EXPORT",
                 "EXTENDED",
-                "EXTERNAL",
+                "EXTERNAL",                
                 "FIELDS",
                 "FILEFORMAT",
                 "FOLLOWING",
