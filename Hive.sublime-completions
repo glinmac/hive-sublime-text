@@ -35,6 +35,8 @@
                 { "trigger" : "positive", "contents": "positive(${1:value})" },
                 { "trigger" : "negative", "contents": "negative(${1:double})" },
                 { "trigger" : "sign", "contents": "sign(${1:double})" },
+                { "trigger" : "pi", "contents": "pi()" },
+                { "trigger" : "e", "contents": "e()" },
 
                 { "trigger" : "decimal(precision, scale)", "contents": "decimal(${1:precision}, ${2:scale})"},
                 { "trigger" : "char(length)", "contents": "char(${1:length})"},
@@ -57,6 +59,7 @@
                 { "trigger" : "month", "contents": "month(${1:date})" },
                 { "trigger" : "day", "contents": "day(${1:date})" },
                 { "trigger" : "dayofmonth", "contents": "dayofmonth(${1:date})" },
+                { "trigger" : "hour", "contents": "hour(${1:date})" },
                 { "trigger" : "minute", "contents": "minute(${1:date})" },
                 { "trigger" : "second", "contents": "second(${1:date})" },
                 { "trigger" : "weekofyear", "contents": "weekofyear(${1:date})" },
@@ -65,11 +68,18 @@
                 { "trigger" : "date_sub", "contents": "date_sub(${1:startdate}, ${2:days})" },
                 { "trigger" : "from_utc_timestamp", "contents": "from_utc_timestamp(${1:timestamp}, ${2:timezone})" },
                 { "trigger" : "to_utc_timestamp", "contents": "to_utc_timestamp(${1:timestamp}, ${2:timezone})" },
+                "current_date",
+                "current_timestamp",
+                { "trigger" : "add_months", "contents": "add_months(${1:startdate}, ${2:nummonths})" },
+                { "trigger" : "last_day", "contents": "last_day(${1:date})" },
+                { "trigger" : "next_day", "contents": "next_day(${1:startdate}, ${2:dayofweek})" },
 
-                { "trigger" : "if(test, value_true, value_false_null)", "contents": "if(${1:test}, ${2:valueTrue}, ${valueFalseNull})" },
+                { "trigger" : "if(test, value_true, value_false_null)", "contents": "if(${1:test}, ${2:valueTrue}, ${3:valueFalseNull})" },
                 { "trigger" : "coalesce", "contents": "COALESCE(${1:v1}, ${2:v2}[, ...])" },
                 { "trigger" : "case a when", "contents": "CASE ${1:a} WHEN ${2:b} THEN ${3:c} ELSE ${3:d} END" },
                 { "trigger" : "case when", "contents": "CASE WHEN ${1:a} THEN ${2:b} ELSE ${3:c} END" },
+                { "trigger" : "greatest", "contents": "GREATEST(${1:v1}, ${2:v2})"},
+                { "trigger" : "least", "contents": "LEAST(${1:v1}, ${2:v2})"},
 
                 { "trigger" : "ascii", "contents": "ascii(${1:string})" },
                 { "trigger" : "base64", "contents": "base64(${1:binary})" },
@@ -109,10 +119,12 @@
                 { "trigger" : "unbase64", "contents": "unbase(${1:string})" },
                 { "trigger" : "upper", "contents": "upper(${1:string})" },
                 { "trigger" : "ucase", "contents": "binary(${1:string})" },
+                { "trigger" : "initcap", "contents": "initcap(${1:string})" },
 
                 { "trigger" : "java_method", "contents": "java_method(${1:class}, ${2:method})" },
                 { "trigger" : "reflect", "contents": "reflect(${1:class}, ${2:method})" },
                 { "trigger" : "hash", "contents": "hash(${1:args})" },
+                { "trigger" : "current_user", "contents": "current_user()" },
 
                 { "trigger" : "xpath", "contents": "xpath(${1:string}, ${2:xpath})" },
                 { "trigger" : "xpath_string", "contents": "xpath_string(${1:string}, ${2:xpath})" },
@@ -158,12 +170,15 @@
                 "FLOAT ",
                 "DOUBLE ",
                 "DECIMAL ",
+
                 "TIMESTAMP ",
                 "DATE ",
-                "BOOLEAN ",
+
                 "STRING ",
                 "VARCHAR ",
                 "CHAR",
+
+                "BOOLEAN ",
                 "BINARY ",
 
                 "STRUCT ",
@@ -227,7 +242,7 @@
                 "EXPLAIN",
                 "EXPORT",
                 "EXTENDED",
-                "EXTERNAL",                
+                "EXTERNAL",
                 "FIELDS",
                 "FILEFORMAT",
                 "FOLLOWING",

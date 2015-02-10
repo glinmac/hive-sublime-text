@@ -14,7 +14,7 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>(?i)^\s*(((?:CREATE(?:\s+TEMPORARY)?(?:\s+OR\s+REPLACE)?|DROP|ALTER|TRUNCATE)\s+(?:EXTERNAL\s+TABLE|TABLE|INDEX|VIEW|DATABASE|SCHEMA|FUNCTION)(?:\s+IF(?:\s+NOT)?\s+EXISTS)?)\s+(?:[a-z_][a-z0-9_]*))\b</string>
+			<string>(?i)^\s*(((?:CREATE(?:\s+TEMPORARY)?(?:\s+OR\s+REPLACE)?|DROP|ALTER|TRUNCATE)\s+(?:EXTERNAL\s+TABLE|TABLE|INDEX|VIEW|DATABASE|SCHEMA|FUNCTION|MACRO|ROLE)(?:\s+IF(?:\s+NOT)?\s+EXISTS)?)\s+(?:[a-z_][a-z0-9_]*))\b</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -23,6 +23,37 @@
 					<string>storage.type.definition.hive</string>
 				</dict>
 				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.parameter.hive</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>$self</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(?i)^\s*((UPDATE)\s+([^\=]+))\s+(SET)\b</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.definition.hive</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.parameter.hive</string>
+				</dict>
+				<key>4</key>
 				<dict>
 					<key>name</key>
 					<string>keyword.parameter.hive</string>
@@ -66,7 +97,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned (by|on)|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|directories|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate|DBPROPERTIES|tablesample|bucket|out of|case|when|then|end|view|jar|orc|escaped by|msck|repair|recover|partitions|replace columns|fileformat|touch|enable|disable|offline|no_drop|rename to|temporary function|index|idxproperties|WITH DEFERRED REBUILD|in table|databases|schemas|tables|extended|functions|columns|formatted|dot|set\s+(dbproperties|location|serde|(owner(\s+(user|role))?))|rebuild|union|percent|rows|else|over|by|unbounded|preceding|current row|following|window|explain|dependency|to|analyze|compute statistics|locks|role|grant|revoke|user|group|change|serdeproperties|null defined as|lock|unlock|use|exclusive|delete|column|grouping sets|with|compact|first|after|file|grant|option|update|show_database|privileges)\b</string>
+			<string>\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned (by|on)|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|(set)?\s*tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|directories|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate|DBPROPERTIES|tablesample|bucket|out of|case|when|then|end|view|jar|orc|escaped by|msck|repair|recover|partitions|replace columns|fileformat|touch|enable|disable|offline|no_drop|rename to|temporary function|index|idxproperties|WITH DEFERRED REBUILD|in table|databases|schemas|tables|extended|functions|columns|formatted|dot|set\s+(dbproperties|location|serde|(owner(\s+(user|role))?))|rebuild|union|percent|rows|else|over|by|unbounded|preceding|current row|following|window|explain|dependency|to|analyze|compute statistics|locks|role|(set|create|grant|drop)\s+role|grant|revoke|user|group|change|serdeproperties|null defined as|lock|unlock|use|exclusive|delete|column|grouping sets|with|compact|first|after|file|grant|option|update|show_database|privileges|function|indexes|compile|named|roles|current|unset|uniquejoin|preserve|shared)\b</string>
 			<key>name</key>
 			<string>keyword.control.hive</string>
 		</dict>
@@ -192,13 +223,13 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:from_unixtime|unix_timestamp|to_date|year|month|day|dayofmonth|hour|minute|second|weekofyear|datediff|date_add|date_sub|from_utc_timestamp|to_utc_timestamp)\b</string>
+			<string>\b(?i:from_unixtime|unix_timestamp|to_date|year|month|day|dayofmonth|hour|minute|second|weekofyear|datediff|date_add|date_sub|from_utc_timestamp|to_utc_timestamp|current_date|current_timestamp|add_months|last_day|next_day|)\b</string>
 			<key>name</key>
 			<string>support.function.udf.date.hive</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(?i:if|coalesce)\b</string>
+			<string>\b(?i:if|coalesce|greatest|least)\b</string>
 			<key>name</key>
 			<string>support.function.udf.conditional.hive</string>
 		</dict>
