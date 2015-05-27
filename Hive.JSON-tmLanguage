@@ -4,7 +4,7 @@
   "fileTypes": ["hql","q","ql"],
   "patterns": [
     {
-      "begin": "(?i)^\\s*(((?:CREATE(?:\\s+TEMPORARY)?(?:\\s+OR\\s+REPLACE)?|DROP|ALTER|TRUNCATE)\\s+(?:EXTERNAL\\s+TABLE|TABLE|INDEX|VIEW|DATABASE|SCHEMA|FUNCTION|MACRO|ROLE)(?:\\s+IF(?:\\s+NOT)?\\s+EXISTS)?)\\s+(?:[a-z_][a-z0-9_]*))\\b",
+      "begin": "(?i)^\\s*(((?:CREATE(?:\\s+TEMPORARY)?(?:\\s+OR\\s+REPLACE)?|DROP|ALTER|TRUNCATE)\\s+(?:EXTERNAL\\s+TABLE|TABLE|INDEX|VIEW|DATABASE|SCHEMA|FUNCTION|MACRO|ROLE)(?:\\s+IF(?:\\s+NOT)?\\s+EXISTS)?)\\s+(?:[a-z_][a-z0-9_\\.]*))\\b",
       "end": "$",
       "beginCaptures": {
           "2" : { "name" : "keyword.parameter.hive"},
@@ -38,7 +38,7 @@
       ]
     },
     {
-    	"match" : "\\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned (by|on)|clustered by|sorted by|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|(set)?\\s*tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|directories|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate|DBPROPERTIES|tablesample|bucket|out of|case|when|then|end|view|jar|orc|escaped by|msck|repair|recover|partitions|replace columns|fileformat|touch|enable|disable|offline|no_drop|rename to|temporary function|index|idxproperties|WITH DEFERRED REBUILD|in table|databases|schemas|tables|extended|functions|columns|formatted|dot|set\\s+(dbproperties|location|serde|(owner(\\s+(user|role))?))|rebuild|union|percent|rows|else|over|by|unbounded|preceding|current row|following|window|explain|dependency|to|analyze|compute statistics|locks|role|(set|create|grant|drop)\\s+role|grant|revoke|user|group|change|serdeproperties|null defined as|lock|unlock|use|exclusive|delete|column|grouping sets|with|compact|first|after|file|grant|option|update|show_database|privileges|function|indexes|compile|named|roles|current|unset|uniquejoin|preserve|shared)\\b",
+    	"match" : "\\b(?i:create|database|schema|if not exists|comment|location|with dbproperties|show|drop|if exists|restrict|cascade|external|table|select|distinct|partitioned (by|on)|clustered|sorted|asc|desc|into|buckets|skewed by|row format|stored as|stored by|with serdeproperties|(set)?\\s*tblproperties|as|like|delimited|fields terminated by|collection items terminated by|map keys terminated by|lines terminated by|serde|sequencefile|textfile|rcfile|directories|inputformat|outputformat|from|where|group by|order by|limit|load data|local|inpath|overwrite|partition|insert|directory|all|cluster by|sort by|distribute by|having|using|reduce|transform|join|left|right|full|outer|semi|cross|lateral view|import|export|describe|archive|unarchive|alter|add|on|with cube|with rollup|truncate|DBPROPERTIES|tablesample|bucket|out of|case|when|then|end|view|jar|orc|escaped by|msck|repair|recover|partitions|replace columns|fileformat|touch|enable|disable|offline|no_drop|rename to|temporary\\s+(function|macro)|index|idxproperties|WITH DEFERRED REBUILD|in table|databases|schemas|tables|extended|functions|columns|formatted|dot|set\\s+(dbproperties|location|serde|(owner(\\s+(user|role))?))|rebuild|union|percent|rows|else|over|by|unbounded|preceding|current row|following|window|explain|dependency|to|analyze|(compute|update)\\s+statistics|locks|role|(set|create|grant|drop)\\s+role|grant|revoke|user|group|change|serdeproperties|null defined as|lock|unlock|use|exclusive|delete|column|grouping sets|with|compact|first|after|file|grant|option|update|show_database|privileges|function|indexes|compile|named|roles|current|unset|uniquejoin|preserve|shared|concatenate|for|principals|avro|recordreader|transactions)\\b",
     	"name" : "keyword.control.hive"
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       "name" : "support.function.udf.complex.hive",
-      "match" : "\\b(map|struct|named_struct|array|create_union)\\b"
+      "match" : "(?i)\\b(map|struct|named_struct|array|create_union)\\b"
     },
     {
       "name" : "support.function.udf.mathematic.hive",
@@ -153,6 +153,28 @@
       },
       "patterns": [
         { "include": "$self" }
+      ]
+    },
+    {
+      "begin": "(?i)(!|dfs)(.*)",
+      "end": "$",
+      "beginCaptures": {
+          "1" : { "name" : "storage.type.definition.hive"},
+          "2" : { "name" : "string.quoted.other.hive"}
+      },
+      "patterns": [
+          { "include": "$self" }
+      ]
+    },
+    {
+      "begin": "(?i)(CRYPTO\\s+(?:CREATE_KEY|CREATE_ZONE|DELETE_KEY))(.*)\\b",
+      "end": "$",
+      "beginCaptures": {
+          "2" : { "name" : "string.quoted.other.hive"},
+          "1" : { "name" : "keyword.control.hive"}
+      },
+      "patterns": [
+          { "include": "$self" }
       ]
     }
   ],
