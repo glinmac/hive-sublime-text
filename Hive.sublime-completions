@@ -120,11 +120,18 @@
                 { "trigger" : "upper", "contents": "upper(${1:string})" },
                 { "trigger" : "ucase", "contents": "binary(${1:string})" },
                 { "trigger" : "initcap", "contents": "initcap(${1:string})" },
+                { "trigger" : "levenshtein", "contents": "levenshtein(${1:string}, ${2:string})" },
+                { "trigger" : "soundex", "contents": "soundex(${1:string})" },
 
                 { "trigger" : "java_method", "contents": "java_method(${1:class}, ${2:method})" },
                 { "trigger" : "reflect", "contents": "reflect(${1:class}, ${2:method})" },
                 { "trigger" : "hash", "contents": "hash(${1:args})" },
                 { "trigger" : "current_user", "contents": "current_user()" },
+                { "trigger" : "md5", "contents": "md5(${1:string_or_binary})" },
+                { "trigger" : "sha1", "contents": "sha1(${1:string_or_binary})" },
+                { "trigger" : "sha", "contents": "sha(${1:string_or_binary})" },
+                { "trigger" : "crc32", "contents": "crc32(${1:string_or_binary})" },
+                { "trigger" : "sha2", "contents": "sha2(${1:string_or_binary}, ${2:int})" },
 
                 { "trigger" : "xpath", "contents": "xpath(${1:string}, ${2:xpath})" },
                 { "trigger" : "xpath_string", "contents": "xpath_string(${1:string}, ${2:xpath})" },
