@@ -166,7 +166,7 @@
                 { "trigger" : "explode", "contents": "explode(${1:value})" },
                 { "trigger" : "inline", "contents": "inine(${1:value})" },
                 { "trigger" : "json_tuple", "contents": "json_tuple(${1:json}, ${2:k1}, ${3:k2} ...)" },
-                { "trigger" : "parse_url_tuple", "contents": "parse_url_tupe(${1:url}, ${2:p1}, ${3:p2} ...)" },
+                { "trigger" : "parse_url_tuple", "contents": "parse_url_tuple(${1:url}, ${2:p1}, ${3:p2} ...)" },
                 { "trigger" : "stack", "contents": "stack(${1:n}, ${2:v1}, .. ${3:vk})" },
                 { "trigger" : "posexplode", "contents": "posexplode(${1:array})" },
 
