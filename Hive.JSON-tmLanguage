@@ -2,7 +2,7 @@
   "name": "Hive",
   "scopeName": "source.hive",
   "fileTypes": ["hql","q","ql"],
-  "patterns": [
+  "patterns":[
     {
       "begin": "(?i)^\\s*(((?:CREATE(?:\\s+TEMPORARY)?(?:\\s+OR\\s+REPLACE)?|DROP|ALTER|TRUNCATE)\\s+(?:EXTERNAL\\s+TABLE|TABLE|INDEX|VIEW|DATABASE|SCHEMA|FUNCTION|MACRO|ROLE)(?:\\s+IF(?:\\s+NOT)?\\s+EXISTS)?)\\s+(?:[a-z_][a-z0-9_\\.]*))\\b",
       "end": "$",
@@ -110,7 +110,7 @@
     },
     {
       "name" : "support.function.udf.mathematic.hive",
-      "match" : "\\b(?i:round|floor|ceil|ceiling|rand|exp|ln|log|log10|log2|pow|power|sqrt|bin|hex|unhex|conv|abs|pmod|sin|asin|cos|acos|tan|atan|degrees|radians|positive|negative|sign|e|pi)\\b"
+      "match" : "\\b(?i:round|bround|floor|ceil|ceiling|rand|exp|ln|log|log10|log2|pow|power|sqrt|bin|hex|unhex|conv|abs|pmod|sin|asin|cos|acos|tan|atan|degrees|radians|positive|negative|sign|e|pi|factorial|cbrt|shiftleft|shiftright|shiftrightunsigned)\\b"
     },
         {
       "name" : "support.function.udf.collection.hive",
@@ -122,19 +122,19 @@
     },
     {
       "name" : "support.function.udf.date.hive",
-      "match" : "\\b(?i:from_unixtime|unix_timestamp|to_date|year|month|day|dayofmonth|hour|minute|second|weekofyear|datediff|date_add|date_sub|from_utc_timestamp|to_utc_timestamp|current_date|current_timestamp|add_months|last_day|next_day|)\\b"
+      "match" : "\\b(?i:from_unixtime|unix_timestamp|to_date|year|quarter|month|day|dayofmonth|hour|minute|second|weekofyear|datediff|date_add|date_sub|from_utc_timestamp|to_utc_timestamp|current_date|current_timestamp|add_months|last_day|next_day|trunc|months_between|date_format)\\b"
     },
     {
       "name" : "support.function.udf.conditional.hive",
-      "match" : "\\b(?i:if|coalesce|greatest|least)\\b"
+      "match" : "\\b(?i:if|coalesce|greatest|least|isnull|isnotnull|nvl)\\b"
     },
     {
       "name" : "support.function.udf.string.hive",
-      "match" : "\\b(?i:ascii|base64|concat|context_ngrams|concat_ws|decode|encode|find_in_set|format_number|get_json_object|in_file|instr|length|locate|lower|lcase|lpad|ltrim|ngrams|parse_url|printf|regexp_extract|regexp_replace|repeat|reverse|rpad|rtrim|sentences|space|split|str_to_map|substr|substring|translate|trim|unbase64|upper|ucase|initcap|levenshtein|soundex)\\b"
+      "match" : "\\b(?i:ascii|base64|concat|context_ngrams|concat_ws|decode|encode|find_in_set|format_number|get_json_object|in_file|instr|length|locate|lower|lcase|lpad|ltrim|ngrams|parse_url|printf|regexp_extract|regexp_replace|repeat|reverse|rpad|rtrim|sentences|space|split|str_to_map|substr|substring|substring_index|translate|trim|unbase64|upper|ucase|initcap|levenshtein|soundex)\\b"
     },
     {
       "name" : "support.function.udf.misc.hive",
-      "match" : "\\b(?i:java_method|reflect|hash|xpath|xpath_short|xpath_int|xpath_long|xpath_float|xpath_double|xpath_number|xpath_string|get_json_object|md5|sha1|sha|crc32|sha2)\\b"
+      "match" : "\\b(?i:java_method|reflect|hash|xpath|xpath_short|xpath_int|xpath_long|xpath_float|xpath_double|xpath_number|xpath_string|get_json_object|md5|sha1|sha|crc32|sha2|current_user|current_database|aes_encrypt|aes_decrypt)\\b"
     },
     {
       "match" : "\\b(?i:count|sum|avg|min|max|variance|var_pop|var_samp|stddev_pop|stddev_samp|covar_pop|covar_samp|corr|percentile|percentile_approx|histogram_numeric|collect_set|collect_list|ntile|lead|lag|first_value|last_value|rank|row_number|dense_rank|cume_dist|percent_rank)\\b",
