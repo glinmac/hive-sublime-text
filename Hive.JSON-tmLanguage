@@ -126,15 +126,19 @@
     },
     {
       "name" : "support.function.udf.conditional.hive",
-      "match" : "\\b(?i:if|coalesce|greatest|least|isnull|isnotnull|nvl)\\b"
+      "match" : "\\b(?i:if|coalesce|greatest|least|isnull|isnotnull|nvl|nullif)\\b"
     },
     {
       "name" : "support.function.udf.string.hive",
-      "match" : "\\b(?i:ascii|base64|concat|context_ngrams|concat_ws|decode|encode|find_in_set|format_number|get_json_object|in_file|instr|length|locate|lower|lcase|lpad|ltrim|ngrams|parse_url|printf|regexp_extract|regexp_replace|repeat|reverse|rpad|rtrim|sentences|space|split|str_to_map|substr|substring|substring_index|translate|trim|unbase64|upper|ucase|initcap|levenshtein|soundex)\\b"
+      "match" : "\\b(?i:ascii|base64|chr|concat|context_ngrams|concat_ws|decode|encode|find_in_set|format_number|get_json_object|in_file|instr|length|locate|lower|lcase|lpad|ltrim|ngrams|parse_url|printf|regexp_extract|regexp_replace|repeat|reverse|rpad|rtrim|sentences|space|split|str_to_map|substr|substring|substring_index|translate|trim|unbase64|upper|ucase|initcap|levenshtein|soundex)\\b"
+    },
+    {
+      "name" : "support.function.udf.masking.hive",
+      "match" : "\\b(?i:mask|mask_first_n|mask_last_n|mask_show_first_n|mask_show_last_n|mask_hash)\\b"
     },
     {
       "name" : "support.function.udf.misc.hive",
-      "match" : "\\b(?i:java_method|reflect|hash|xpath|xpath_short|xpath_int|xpath_long|xpath_float|xpath_double|xpath_number|xpath_string|get_json_object|md5|sha1|sha|crc32|sha2|current_user|current_database|aes_encrypt|aes_decrypt)\\b"
+      "match" : "\\b(?i:java_method|reflect|hash|xpath|xpath_short|xpath_int|xpath_long|xpath_float|xpath_double|xpath_number|xpath_string|get_json_object|md5|sha1|sha|crc32|sha2|current_user|current_database|aes_encrypt|aes_decrypt|version)\\b"
     },
     {
       "match" : "\\b(?i:count|sum|avg|min|max|variance|var_pop|var_samp|stddev_pop|stddev_samp|covar_pop|covar_samp|corr|percentile|percentile_approx|histogram_numeric|collect_set|collect_list|ntile|lead|lag|first_value|last_value|rank|row_number|dense_rank|cume_dist|percent_rank)\\b",

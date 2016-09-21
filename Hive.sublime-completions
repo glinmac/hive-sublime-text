@@ -94,9 +94,11 @@
                 { "trigger" : "case when",                              "contents": "CASE WHEN ${1:a} THEN ${2:b} ELSE ${3:c} END" },
                 { "trigger" : "greatest",                               "contents": "greatest(${1:v1}, ${2:v2})"},
                 { "trigger" : "least",                                  "contents": "least(${1:v1}, ${2:v2})"},
+                { "trigger" : "nullif",                                 "contents": "nullif(${1:a}, ${2:b}"},
 
                 { "trigger" : "ascii", "contents": "ascii(${1:string})" },
                 { "trigger" : "base64", "contents": "base64(${1:binary})" },
+                { "trigger" : "chr", "contents": "chr(${1:bigint_or_double})" },
                 { "trigger" : "concat", "contents": "concat(${1:v1}, ${2:v2})" },
                 { "trigger" : "context_ngrams", "contents": "context_ngrams(${1:array}, ${2:array}, ${3:K}, ${4:pg})" },
                 { "trigger" : "concat_ws", "contents": "concat_ws(${1:sep}, ${2:v1}, ${2:v2})" },
@@ -150,6 +152,14 @@
                 { "trigger" : "sha2",             "contents": "sha2(${1:string_or_binary}, ${2:int})" },
                 { "trigger" : "aes_encrypt",      "contents": "aes_encrypt(${1:string_or_binary}, ${2:key})" },
                 { "trigger" : "aes_decrypt",      "contents": "aes_decrypt(${1:string_or_binary}, ${2:key})" },
+                { "trigger" : "version", "contents": "version()" },
+
+                { "trigger" : "mask", "contents": "mask(${1:string}, ${2:upper}, ${3:lower}, ${4:number})"},
+                { "trigger" : "mask_first_n", "contents": "mask_first_n(${1:string}, ${2:int})"},
+                { "trigger" : "mask_last_n", "contents": "mask_last_n(${1:string}, ${2:int})"},
+                { "trigger" : "mask_show_first_n", "contents": "mask_show_first_n(${1:string}, ${2:int})"},
+                { "trigger" : "mask_show_last_n", "contents": "mask_show_last_n(${1:string}, ${2:int})"},
+                { "trigger" : "mask_hash", "contents": "mask_hash(${1:string})"},
 
                 { "trigger" : "xpath", "contents": "xpath(${1:string}, ${2:xpath})" },
                 { "trigger" : "xpath_string", "contents": "xpath_string(${1:string}, ${2:xpath})" },
